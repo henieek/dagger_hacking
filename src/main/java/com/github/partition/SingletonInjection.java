@@ -1,5 +1,8 @@
-package com.github.partition.common;
+package com.github.partition;
 
+import com.github.partition.common.Greeter;
+import com.github.partition.common.HappyGreeter;
+import com.github.partition.common.SingletonGreeter;
 import dagger.Module;
 import dagger.ObjectGraph;
 import dagger.Provides;
@@ -10,7 +13,7 @@ import javax.inject.Singleton;
 public class SingletonInjection {
 
   @Inject
-  SingletonInjection iAmASingleton;
+  SingletonGreeter iAmASingleton;
 
   @Inject
   Greeter iAmASingletonToo;
@@ -22,7 +25,8 @@ public class SingletonInjection {
   @Module(injects = SingletonInjection.class)
   static class SingletonModule {
 
-    @Provides @Singleton
+    @Provides
+    @Singleton
     public Greeter provideSingleton() {
       return new HappyGreeter();
     }
