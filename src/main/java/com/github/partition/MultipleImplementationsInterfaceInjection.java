@@ -2,6 +2,7 @@ package com.github.partition;
 
 import com.github.partition.common.Greeter;
 import com.github.partition.common.HappyGreeter;
+
 import dagger.Module;
 import dagger.ObjectGraph;
 import dagger.Provides;
@@ -21,8 +22,8 @@ public class MultipleImplementationsInterfaceInjection {
   static class HappyModule {
 
     @Provides
-    public Greeter provideHappyGreeter() {
-      return new HappyGreeter();
+    public Greeter provideGreeter(HappyGreeter happyGreeter) {
+      return happyGreeter;
     }
   }
 }
